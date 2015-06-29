@@ -57,15 +57,19 @@ function stringifyJSON(obj) {
             // I have a feeling this could be refactored to better use recursion. Maybe a check to see if you are in an inner object, and if so have the broader function add a colon
             //and if you are at a parent object, just have it add brackets? tried it, doesn't seem possible since they need to be added in different places so then you would need to do a bunch of slicing.
             // If you're using all those array methods might as well do it like this. Why not with map? I think you could, but I got confused by the obj callback parameters, esp since you going to the key, 
-            // you have to map to the key of the key, which gets confusing:
+            // you have to map to the key of the key, which gets confusing. JShint told me not to make a function (ie use map) within a loop itself. seems ridiculously inefficient now that I think of it.
 
-            //      if(obj[key] && typeof(obj[key] === 'object')) {
+        //          if(obj[key] && typeof(obj[key] === 'object')) {
 
 
-            //     obj[key] = obj[key].map(function(obj[key]){
-            //     returned.push(stringifyJSON(obj[key]) + ":" + stringifyJSON(obj[key][key]));
-            //     });
-            // }
+        //         obj[key] = obj[key].map(function(obj[key]){
+        //         stringifyJSON(obj[key]) + ":" + stringifyJSON(obj[key][key]);
+        //         });
+        //     }
+        //     //returned.push(stringifyJSON(key) + ":" + stringifyJSON(obj[key]));
+            
+        // }
+        // return '{' + obj + '}';
             returned.push(stringifyJSON(key) + ":" + stringifyJSON(obj[key]));
             //});
         }
