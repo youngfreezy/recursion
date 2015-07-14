@@ -8,7 +8,7 @@ function stringifyJSON(obj) {
 
     //base case:
 
-    if (obj && typeof(obj) === 'string') {
+    if (typeof(obj) === 'string') {
         return '"' + obj + '"';
     }
 
